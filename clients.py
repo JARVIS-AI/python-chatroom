@@ -4,7 +4,7 @@ import threading
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 host = socket.gethostname()
-port = 1001
+port = 9001
 
 server.connect((host, port))
 
@@ -30,7 +30,7 @@ def get_new_msg(sock):
         except:
             break
 
-t = threading.Thread(target=get_new_message, args=(s,))
+t = threading.Thread(target=get_new_msg, args=(s,))
 t.daemon = True
 t.start()
 
