@@ -32,7 +32,7 @@ def handle_client(c, addr):
 
     print(f"\033[33mclient {addr} - username :  \033[35m{name}\033[33m ...!\033[0m")
 
-    c.send(f"\r\033[32mHi {name}. Enter QUIT for Exit.\033[0m".encode())
+    c.send(f"\r\033[32mHi {name}. Enter !q for Exit.\033[0m".encode())
 
     broadcast(f"\r\033[36m{name} Entered to chat room\n\033[37mYou : \033[0m".encode(), c)
 
@@ -57,7 +57,7 @@ def handle_client(c, addr):
 
 while True:
     c, addr = server.accept()
-    print(f"\033[33mclient {addr} connected ...!\033[0m")
+    print(f"\033[33mclient {addr} \033[0m\033[32mconnected ...!\033[0m")
 
     t = threading.Thread(target=handle_client, args=(c, addr))
     t.start()
