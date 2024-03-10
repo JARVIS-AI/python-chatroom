@@ -56,7 +56,7 @@ def handle_client(c, addr):
 
 
 while True:
-    c, addr = s.accept()
+    c, addr = server.accept()
     print(f"\033[33mclient {addr} connected ...!\033[0m")
 
     t = threading.Thread(target=handle_client, args=(c, addr))
