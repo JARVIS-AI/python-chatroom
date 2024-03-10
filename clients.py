@@ -3,10 +3,10 @@ import threading
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-HOST = socket.gethostname()
-PORT = 1001
+host = socket.gethostname()
+port = 1001
 
-server.connect((HOST, PORT))
+server.connect((host, port))
 
 message = server.recv(1024)
 print(message.decode())
