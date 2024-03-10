@@ -3,9 +3,9 @@ import threading
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-HOST = socket.gethostname()
-PORT = 1234
-server.bind((HOST, PORT))
+host = socket.gethostname()
+port = 1234
+server.bind((host, port))
 
 server.listen(5)
 print(f"\033[32mserver listening on {HOST} ({socket.gethostbyname(HOST)})\033[0m")
