@@ -4,7 +4,7 @@ import threading
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 host = socket.gethostname()
-port = 1001
+port = 9001
 server.bind((host, port))
 
 server.listen(5)
