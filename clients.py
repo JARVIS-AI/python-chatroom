@@ -11,7 +11,7 @@ server.connect((host, port))
 message = server.recv(1024)
 print(message.decode())
 
-name = input("\033[35mEnter Your Username: ")
+name = input("\033[35mEnter Your Username: \033[0m")
 print("\033[0m")
 server.send(name.encode())
 

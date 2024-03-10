@@ -30,9 +30,9 @@ def handle_client(c, addr):
         print(f"\033[31mclient {addr} disconnected ...!\033[0m")
         return c.close()
 
-    print(f"\033[33mclient {addr} - username :  \033[35m{name}\033[33m ...!\033[0m")
+    print(f"\033[33mclient {addr} - username :  \033[35m{name} \033[34m[CONNECTED]\033[0m")
 
-    c.send(f"\r\033[32mHi {name}. Enter !q for Exit.\033[0m".encode())
+    c.send(f"\r\033[32mHi \033[36m{name}. \033[32mEnter \033[37m!q \033[32mfor Exit.\033[0m".encode())
 
     broadcast(f"\r\033[36m{name} Entered to chat room\n\033[37mYou : \033[0m".encode(), c)
 
@@ -42,14 +42,14 @@ def handle_client(c, addr):
         try:
             message = c.recv(1024)
             if message == b"!q":
-                print(f"\033[33mclient {addr} - username :  \033[35m{name}\033[33m disconnected ...!\033[0m")
+                print(f"\033[33mclient {addr} - username :  \033[35m{name}\033[31m disconnected ...!\033[0m")
                 clients.remove((c, name))
                 broadcast(f"\r\033[31m{name} Left The Chat Room\n\033[37mYou : ".encode())
                 return c.close()
             else:
                 broadcast(f"\r\033[36m{name}: {message.decode()}\n\033[37mYou : ".encode(), c)
         except:
-            print(f"\033[33mclient {addr} - username :  \033[35m{name}\033[33m disconnected ...!\033[0m")
+            print(f"\033[33mclient {addr} - username :  \033[35m{name}\033[31m disconnected ...!\033[0m")
             clients.remove((c, name))
             broadcast(f"\r\033[31m{name} Left The Chat Room\n\033[37mYou : ".encode())
             return c.close()
@@ -57,7 +57,7 @@ def handle_client(c, addr):
 
 while True:
     c, addr = server.accept()
-    print(f"\033[33mclient {addr} \033[0m\033[32mconnected ...!\033[0m")
+    print(f"\033[33mclient {addr} \033[32mConnection ...\033[0m")
 
     t = threading.Thread(target=handle_client, args=(c, addr))
     t.start()
