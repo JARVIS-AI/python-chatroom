@@ -30,7 +30,7 @@ def get_new_msg(sock):
         except:
             break
 
-t = threading.Thread(target=get_new_msg, args=(s,))
+t = threading.Thread(target=get_new_msg, args=(server,))
 t.daemon = True
 t.start()
 
@@ -43,6 +43,6 @@ while True:
 
     if message == "!q":
         server.close()
-    break
+        break
 
 print("\033[32mHave Good Day ...!\033[0m")
