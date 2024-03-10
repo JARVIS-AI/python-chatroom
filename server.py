@@ -8,7 +8,7 @@ port = 1234
 server.bind((host, port))
 
 server.listen(5)
-print(f"\033[32mserver listening on {HOST} ({socket.gethostbyname(HOST)})\033[0m")
+print(f"\033[32mserver listening on {host} ({socket.gethostbyname(HOST)})\033[0m")
 
 clients = []
 
